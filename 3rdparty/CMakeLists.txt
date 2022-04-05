@@ -1,0 +1,2 @@
+add_subdirectory(gbenchmark)
+add_subdirectory(gtest)
