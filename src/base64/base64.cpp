@@ -9,4 +9,30 @@
 // (for a total of 65) that is used for padding ('='). Most commonly, base64 is
 // used in email, especially email attachments like images.
 
-namespace base64 {}
+namespace base64 {
+std::size_t encoded_size(BytesRef buf) noexcept {
+    const auto len = buf.length();
+
+    if (len == 0) {
+        return 0;
+    }
+
+    const auto remain = len % 3;
+    unsigned long new_len = len;
+
+    if (remain > 0) {
+        new_len += (3 - remain);
+    }
+
+    new_len /= 3;
+    new_len *= 4;
+
+    return new_len;
+}
+
+std::string encode(BytesRef byte_data) {
+    [[maybe_unused]] const auto len = byte_data.length();
+
+    return {};
+}
+}  // namespace base64

@@ -12,6 +12,7 @@ ExternalProject_Add(gtest-build
 )
 
 ExternalProject_Get_Property(gtest-build INSTALL_DIR)
+ExternalProject_Get_Property(gtest-build SOURCE_DIR)
 
 file(MAKE_DIRECTORY ${INSTALL_DIR}/include)
 add_library(gtest STATIC IMPORTED GLOBAL)
@@ -22,4 +23,11 @@ set_target_properties(gtest
         VERSION ${DEP_GTEST_VERSION}
 )
 
+add_library(gtest_main STATIC IMPORTED GLOBAL)
+set_target_properties(gtest_main
+    PROPERTIES
+        IMPORTED_LOCATION ${INSTALL_DIR}/lib/libgtest_main.a
+)
+
 add_dependencies(gtest gtest-build)
+add_dependencies(gtest_main gtest-build)

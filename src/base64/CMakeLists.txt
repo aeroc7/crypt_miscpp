@@ -16,7 +16,8 @@ target_link_libraries(base64_l
 add_library(mbase64 STATIC IMPORTED GLOBAL)
 set_target_properties(mbase64
     PROPERTIES
-        IMPORTED_LOCATION ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/libbase64_l.a
+        IMPORTED_LOCATION ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/libbase64_l.a
         INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_LIST_DIR}
 )
 
+add_dependencies(mbase64 base64_l)

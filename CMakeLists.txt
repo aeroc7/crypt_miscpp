@@ -25,7 +25,18 @@ enable_sanitizers(project_options)
 # Static analysis
 include(cmake/StaticAnalyzers.cmake)
 
+# Testing
+option(ENABLE_TESTING "Build and run tests" ON)
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+    include(CTest)
+endif()
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
 add_subdirectory(3rdparty)
 add_subdirectory(src)
+
+if(ENABLE_TESTING)
+    add_subdirectory(tests)
+endif()
