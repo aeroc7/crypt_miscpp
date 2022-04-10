@@ -8,7 +8,7 @@
 namespace base64 {
 using BytesRef = std::basic_string_view<std::uint8_t>;
 
-std::size_t encoded_size(BytesRef buf) noexcept;
+std::size_t encoded_size(std::size_t len) noexcept;
 std::string encode(BytesRef buf);
 }  // namespace base64
 

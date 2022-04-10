@@ -3,14 +3,15 @@ add_library(base64_l base64.cpp)
 
 set(base64_common project_options project_warnings utilities)
 
-target_link_libraries(base64
+target_link_libraries(base64_l
     PRIVATE
         ${base64_common}
 )
 
-target_link_libraries(base64_l
+target_link_libraries(base64
     PRIVATE
         ${base64_common}
+        base64_l
 )
 
 add_library(mbase64 STATIC IMPORTED GLOBAL)
